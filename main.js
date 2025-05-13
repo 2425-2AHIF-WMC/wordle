@@ -102,7 +102,7 @@ function checkIfWordExists(word) {
     });
 }
 
-function getRandomWordFromLocalServer() {
+function getRandomWordFromLocalServer() { // command for json-server start: json-server --watch db.json --port 3000
     fetch ("http://localhost:3000/words") // fetch the words from the local server
     .then(response => response.json()) // convert the response to json
     .then(words => {
