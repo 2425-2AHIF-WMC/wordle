@@ -8,6 +8,11 @@ let solution = ""; // solution word
 
 let gameOver = false; // game over flag
 
+document.addEventListener("DOMContentLoaded", () => {
+    createBoard();
+    getRandomWordFromLocalServer();
+});
+
 const board = document.getElementById("game-board"); // get the game board
 
 function createBoard() {
@@ -37,7 +42,7 @@ function handleKeyPress(event) {
         checkWord(); // check word
     }
     else if (key.length === 1 && key.match(/[a-z]/i) && currentTile < 5) { // if a letter is pressed
-        addLetter(key.ToUpperCase()); // add letter
+        addLetter(key.toUpperCase()); // add letter
     }
 }
 
@@ -67,6 +72,11 @@ function checkWord() {
         return; // exit the function
     }
 
+    if (!solution) {
+        alert("❗ Das Spiel lädt noch. Bitte warte einen Moment.");
+        return;
+    }
+
     checkIfWordExists(guess).then(isValid => {
         if (!isValid) { // if the word doesn't exist
             alert("❌ Dieses Wort existiert nicht!"); // alert the user
@@ -76,6 +86,7 @@ function checkWord() {
         if (guess === solution) { // if the guess is correct
             colorTiles(guess); // color the tiles
             alert("🎉 Richtig geraten!"); // alert the user
+            gameOver = true;
         } else { // if the guess is incorrect
             colorTiles(guess); // color the tiles
             currentRow++; // move to the next row
@@ -107,7 +118,7 @@ function getRandomWordFromLocalServer() { // command for json-server start: json
     .then(response => response.json()) // convert the response to json
     .then(words => {
         const randomIndex = Math.floor(Math.random() * words.length); // get a random index
-        solution = words[randomIndex].toUpperCase(); // get the random word
+        solution = words[randomIndex].word.toUpperCase();// get the random word
         console.log("Solution:", solution); // log the solution
     })
     .catch(error => {
@@ -117,8 +128,8 @@ function getRandomWordFromLocalServer() { // command for json-server start: json
 
 function colorTiles(guess) {
     const row = document.getElementsByClassName("row")[currentRow]; // get the current row
-    const solutionArray = solutionl.Split(""); // split the solution into an array
-    const guessArray = guess.Split(""); // split the guess into an array
+    const solutionArray = solution.split(""); // split the solution into an array
+    const guessArray = guess.split(""); // split the guess into an array
     const colors = Array(5).fill("grey"); // standard color for all tiles
 
     for (let i = 0; i < 5; i++) { // loop through the guess
