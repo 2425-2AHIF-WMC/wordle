@@ -1,71 +1,20 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>Wordle-Spiel</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fafafa;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Wordle-Spiel</title>
+  </head>
+  <body>
 
-    h1 {
-      color: #333;
-    }
+    <h1>Wordle</h1>
 
-    #game-board {
-      display: grid;
-      grid-template-rows: repeat(6, 1fr);
-      gap: 5px;
-      justify-content: center;
-      margin: 20px auto;
-    }
+    <div id="game-board"></div>
 
-    .row {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 5px;
-    }
+    <div id="message-container" ></div>
 
-    .tile {
-      width: 60px;
-      height: 60px;
-      border: 1px solid #ccc;
-      font-size: 32px;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
-    }
+    <button id="reset-button">Neues Spiel</button>
 
-    #reset-button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4285f4;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #reset-button:hover {
-      background-color: #357ae8;
-    }
-  </style>
-</head>
-<body>
-
-<h1>Wordle auf Deutsch</h1>
-
-<div id="game-board"></div>
-
-<button id="reset-button">Neues Spiel</button>
-
-<script src="main.js"></script> <!-- Hier kommt dein JS-Code rein -->
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>

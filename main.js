@@ -1,8 +1,6 @@
-getRandomWordFromLocalServer(); // get a random word from the local server
-
 let currentRow = 0; // current row
 let currentTile = 0; // current tile
-let guessGrid = Array(6).fill("").map(() => Array(5).fill("")); // creates a array with 6 rows and 5 columns
+let guessGrid = Array(6).fill("").map(() => Array(5).fill("")); // creates an array with 6 rows and 5 columns
 
 let solution = ""; // solution word
 
@@ -10,12 +8,14 @@ let gameOver = false; // game over flag
 
 document.addEventListener("DOMContentLoaded", () => {
     createBoard();
+    updateActiveTile();
     getRandomWordFromLocalServer();
 });
 
 const board = document.getElementById("game-board"); // get the game board
 
 function createBoard() {
+    board.innerHTML = ""; // delete old board
     for (let i = 0; i < 6; i++) { // 6 rows
         const row = document.createElement("div"); // create a new row
         row.className = "row"; // give row the class row
@@ -35,7 +35,7 @@ function handleKeyPress(event) {
 
     const key = event.key; // get the key pressed
 
-    if (key === "BackSpace") { // if backspace is pressed
+    if (key === "Backspace") { // if backspace is pressed
        deleteLetter(); // delete letter
     }
     else if (key === "Enter") { // if enter is pressed
@@ -52,6 +52,7 @@ function addLetter(letter) {
     tile.textContent = letter; // set the tile text to the letter
     guessGrid[currentRow][currentTile] = letter; // set the guess grid to the letter
     currentTile++; // move to the next tile
+    updateActiveTile(); // update cursor
 }
 
 function deleteLetter() {
@@ -61,6 +62,7 @@ function deleteLetter() {
         const tile = row.children[currentTile]; // get the current tile
         tile.textContent = ""; // set the tile text to empty
         guessGrid[currentRow][currentTile] = ""; // set the guess grid to empty
+        updateActiveTile(); // update cursor
     }
 }
 
@@ -68,24 +70,24 @@ function checkWord() {
     const guess = guessGrid[currentRow].join("").toUpperCase(); // join the guess grid to a string
 
     if (guess.length !== 5) { // if the guess isn't 5 letters long
-        alert("❗ Bitte gib ein Wort mit 5 Buchstaben ein."); // alert the user
+        showMessage("❗ Please enter a word with 5 letters."); // alert the user
         return; // exit the function
     }
 
     if (!solution) {
-        alert("❗ Das Spiel lädt noch. Bitte warte einen Moment.");
+        showMessage("❗ Game loading! Please wait a moment.");
         return;
     }
 
     checkIfWordExists(guess).then(isValid => {
         if (!isValid) { // if the word doesn't exist
-            alert("❌ Dieses Wort existiert nicht!"); // alert the user
+            showMessage("❌ This word doesn't exist!"); // alert the user
             return; // exit the function
         }
 
         if (guess === solution) { // if the guess is correct
             colorTiles(guess); // color the tiles
-            alert("🎉 Richtig geraten!"); // alert the user
+            showMessage("🎉 Correct!"); // alert the user
             gameOver = true;
         } else { // if the guess is incorrect
             colorTiles(guess); // color the tiles
@@ -93,7 +95,7 @@ function checkWord() {
             currentTile = 0; // reset the current tile
 
             if (currentRow === 6) { // if the user has used all their guesses
-                alert("❌ Leider verloren! Das Wort war: " + solution); // alert the user
+                showMessage("❌ You lost! The word was: " + solution); // alert the user
                 gameOver = true; // set game over flag
             }
         }
@@ -104,7 +106,7 @@ function checkIfWordExists(word) {
     return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.toLowerCase()}`) // fetch the word from the dictionary API
     .then(response => { 
       if (!response.ok) { // if the response is not ok
-        return false; // word doesn't exist 
+        return false; // word doesn't exist
       }
       return true; // word exists
     })
@@ -177,4 +179,33 @@ function resetGame() {
     gameOver = false; // reset the game over flag
 
     getRandomWordFromLocalServer();
+}
+
+function updateActiveTile() {
+    // delete old .active
+    document.querySelectorAll('.tile.active').forEach(tile => tile.classList.remove('active'));
+
+    // set new active cursor
+    if (!gameOver && currentTile < 5) {
+        const row = document.getElementsByClassName("row")[currentRow];
+        const tile = row.children[currentTile];
+        tile.classList.add("active");
+    }
+}
+
+function showMessage(text) {
+    const container = document.getElementById("message-container");
+    if (!container) return;
+
+    const message = document.createElement("div");
+    message.className = "message";
+    message.textContent = text;
+
+    container.appendChild(message);
+
+    // Delete after 3 seconds
+    setTimeout(() => {
+        message.style.opacity = '0';
+        setTimeout(() => container.removeChild(message), 500);
+    }, 3000);
 }
