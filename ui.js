@@ -53,17 +53,17 @@ export function colorTiles(guess, solution, currentRow) {
     // Set green for correct letters in correct positions
     for (let i = 0; i < 5; i++) {
         if (guessArray[i] === solutionArray[i]) {
-            colors[i] = "green";
+            colors[i] = "#67b05a"; //green
             solutionArray[i] = null; // Prevent reuse
         }
     }
 
     // Set yellow for correct letters in wrong positions
     for (let i = 0; i < 5; i++) {
-        if (colors[i] !== "green") {
+        if (colors[i] !== "#67b05a") {
             const index = solutionArray.indexOf(guessArray[i]);
             if (index !== -1) {
-                colors[i] = "yellow";
+                colors[i] = "#ebd067"; //yellow
                 solutionArray[index] = null;
             }
         }
