@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <title>Wordle-Spiel</title>
-  </head>
-  <body>
+<html lang="de"> <!-- Page language is German -->
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+  <title>Wordle Game</title> <!-- Page title -->
+</head>
+<body>
 
-    <h1>Wordle</h1>
+<h1>Wordle</h1> <!-- Main heading -->
 
-    <div id="game-board"></div>
+<!-- The game board where the word guesses appear -->
+<div id="game-board"></div>
 
-    <div id="message-container" ></div>
+<!-- Container for showing messages (e.g., win/loss, errors) -->
+<div id="message-container"></div>
 
-    <button id="reset-button">Neues Spiel</button>
+<!-- On-screen keyboard will be rendered here -->
+<div id="keyboard"></div>
 
-    <script src="main.js"></script>
-  </body>
+<!-- Button to start a new game -->
+<button id="reset-button">New Game</button>
+
+<!-- Main JavaScript file -->
+<script type="module" src="main.js"></script>
+
+</body>
 </html>
