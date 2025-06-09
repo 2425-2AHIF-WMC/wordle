@@ -8,7 +8,7 @@
     {
       "id": "e55d",
       "username": "mememe",
-      "wins": 0
+      "wins": 1
     },
     {
       "id": "6b2a",
@@ -19,6 +19,16 @@
       "id": "224c",
       "username": "fille",
       "wins": 1
+    },
+    {
+      "id": "a125",
+      "username": "ala",
+      "wins": 0
+    },
+    {
+      "id": "e32f",
+      "username": "kys",
+      "wins": 4
     }
   ]
 }

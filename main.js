@@ -6,6 +6,7 @@ import { getRandomWordFromLocalServer } from "./word.js";
 import { handleKeyPress } from "./input.js";
 import { resetGame } from "./game.js";
 import { createUser, GetUserFromJson, LoadUser, ProfileButtonClick ,LoadSavedUser, DisplayUsername } from "./users.js";
+let isPopupOpen = false;
 
 
 // Wait for the HTML DOM to fully load
@@ -25,16 +26,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("AddNewUserButton").addEventListener("click", () => {
         document.getElementById("makeNewUserPopup").style.display = "block";
+        isPopupOpen = true;
+
+        const activeTile = document.querySelector('.tile.active');
+        if (activeTile) {
+            activeTile.style.boxShadow = 'inset 0 0 0 1000px rgba(0, 0, 0, 0.5)';
+        }
     })
+
+
 
     document.getElementById("closeNewUserPopup").addEventListener("click", () => {
         document.getElementById("makeNewUserPopup").style.display = "none";
+        isPopupOpen = false;
+
+        const activeTileClose = document.querySelector('.tile.active');
+        if (activeTileClose) {
+            activeTileClose.style.boxShadow = '';
+        }
+
         location.reload();
     })
+
+
+
 });
 
+
 // Handle key presses from the user's keyboard
-document.addEventListener("keydown", handleKeyPress);
+document.addEventListener("keydown", (event) => {
+    if (isPopupOpen) {
+        return;
+    }
+
+    handleKeyPress(event);
+});
 
 // Handle the reset button click to start a new game
-document.getElementById("reset-button").addEventListener("click", resetGame);
+document.getElementById("reset-button").addEventListener("click", () => {
+    resetGame();
+    updateActiveTile();
+});
+

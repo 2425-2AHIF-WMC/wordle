@@ -20,7 +20,8 @@ export function resetGame() {
             tiles[j].textContent = ""; // Clear tile content
             tiles[j].style.backgroundColor = ""; // Clear background color
             tiles[j].style.color = ""; // Reset text color
-            tiles[j].style.border = "1px solid #ccc"; // Reset border color
+            tiles[j].classList.remove('active'); // Remove active class first
+            tiles[j].style.border = ""; // Reset to default instead of forcing gray
         }
     }
 

@@ -1,8 +1,9 @@
 import { LoadUser } from "./users.js";
 let currentUser = null;
+let user;
 
 document.addEventListener("DOMContentLoaded", async () => {
-    let user = await LoadUser();
+    user = await LoadUser();
 
     DropdownSelect(user);
 
@@ -30,6 +31,8 @@ function DropdownSelect(user) {
         option.textContent = users.username;
         select.appendChild(option);
     })
+
+
 }
 
 function PlayerSelect (){
@@ -40,6 +43,7 @@ function PlayerSelect (){
         currentUser = selectUser;
         localStorage.setItem("selectedUser", selectUser);
         console.log(selectUser);
+        location.reload();
     }
     else{
         currentUser = null;
@@ -68,5 +72,10 @@ function DisplayUsername (){
 
 function DisplayWins () {
     const wins = document.getElementById("winAmount");
-    wins.textContent = "5";
+
+    for (let i = 0; i < user.length; i++) {
+        if (currentUser === user[i].username) {
+            wins.textContent = `${user[i].wins}`;
+        }
+    }
 }
