@@ -44,19 +44,27 @@ h1 {
 
 
 #reset-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4285f4;
-    color: white;
+    background-color: darkgray;
+    color: darkslategray;
     border: none;
-    border-radius: 5px;
+    border-radius: 10rem;
+    padding: 7px 17px;
+    font-size: 16px;
     cursor: pointer;
     float: left;
 
 }
 
 #reset-button:hover {
-    background-color: #357ae8;
+    background-color: lightgray;
+}
+
+#AddNewUserButton:hover {
+    background-color: lightgray;
+}
+
+#closeNewUserPopup:hover {
+    background-color: lightgray;
 }
 
 .tile.active {
@@ -103,3 +111,119 @@ h1 {
     transform: translateX(-50%);
     z-index: 1000;
 }
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+#user{
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10rem;
+    background-image: url("bilder/blank-profile-picture-973460_1280.webp");
+    background-size: cover;
+}
+
+#profileImg{
+    align-items: center;
+    border: none;
+    border-radius: 10rem;
+    background-image: url("bilder/blank-profile-picture-973460_1280.webp");
+    background-size: cover;
+    width: 10rem;
+    height: 10rem;
+}
+
+#username{
+    position: absolute;
+    top: 3.6rem;
+    right: 2rem;
+}
+
+#AddNewUserButton{
+    position: absolute;
+    top: 3.7rem;
+    left: 1rem;
+    background-color: darkgray;
+    color: darkslategray;
+    border: none;
+    border-radius: 10rem;
+    padding: 7px 17px;
+    font-size: 16px;
+}
+
+#makeNewUserPopup{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popupBox{
+    background-color: white;
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#createUser{
+    width: 20rem;
+    height: 2rem;
+    background-color: lightgray;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+#closeNewUserPopup {
+    background-color: darkgray;
+    color: darkslategray;
+    border: none;
+    border-radius: 10rem;
+    padding: 7px 17px;
+    font-size: 16px;
+}
+
+#saveUser {
+    background-color: #757D75;
+    color: lightgray;
+    border: none;
+    border-radius: 10rem;
+    padding: 3px 13px;
+    font-size: 13px;
+}
+
+#saveUser:hover {
+    background-color: darkgray;
+}
+
+#backToGame {
+    background-color: darkgray;
+    color: darkslategray;
+    border: none;
+    border-radius: 10rem;
+    padding: 7px 17px;
+    font-size: 16px;
+}
+
+#backToGame:hover {
+    background-color: lightgray;
+}
+

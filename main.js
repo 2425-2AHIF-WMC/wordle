@@ -5,6 +5,8 @@ import { createBoard, updateActiveTile, createKeyboard } from "./ui.js";
 import { getRandomWordFromLocalServer } from "./word.js";
 import { handleKeyPress } from "./input.js";
 import { resetGame } from "./game.js";
+import { createUser, GetUserFromJson, LoadUser, ProfileButtonClick ,LoadSavedUser, DisplayUsername } from "./users.js";
+
 
 // Wait for the HTML DOM to fully load
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,6 +14,23 @@ document.addEventListener("DOMContentLoaded", () => {
     createKeyboard();             // Create the on-screen keyboard
     updateActiveTile();           // Visually highlight the first tile
     getRandomWordFromLocalServer(); // Fetch a new random word from the local server
+    document.getElementById("saveUser").addEventListener("click", () => {
+        createUser();
+    });
+    GetUserFromJson();
+    LoadUser();
+    ProfileButtonClick();
+    LoadSavedUser();
+    DisplayUsername();
+
+    document.getElementById("AddNewUserButton").addEventListener("click", () => {
+        document.getElementById("makeNewUserPopup").style.display = "block";
+    })
+
+    document.getElementById("closeNewUserPopup").addEventListener("click", () => {
+        document.getElementById("makeNewUserPopup").style.display = "none";
+        location.reload();
+    })
 });
 
 // Handle key presses from the user's keyboard

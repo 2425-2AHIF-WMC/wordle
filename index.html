@@ -3,18 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
-  <title>Wordle Game</title> <!-- Page title -->
+  <title>Wordle Game</title>
+  <script type="module" src="users.js"></script> <!-- Page title -->
 </head>
 <body>
 
 <header>
   <h1>Wordle</h1>
-
+  <button id="user"></button>
+  <p id="username"></p>
+  <button id="AddNewUserButton">Add New User</button>
   <hr>
 </header>
 
+<div id="makeNewUserPopup">
+  <div id="popupBox">
+    <h2>create a new user!</h2>
+    <input id="createUser" placeholder="Enter a new username">
+
+    <button id="saveUser">Save User</button>
+    <br><br>
+    <button id="closeNewUserPopup">close</button>
+  </div>
+</div>
+
+
 <!-- Button to start a new game -->
 <button id="reset-button">New Game</button>
+
+
 
 <!-- The game board where the word guesses appear -->
 <div id="game-board"></div>

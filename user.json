@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "1200",
+      "username": "lala",
+      "wins": 0
+    },
+    {
+      "id": "e55d",
+      "username": "mememe",
+      "wins": 0
+    },
+    {
+      "id": "6b2a",
+      "username": "lalalala",
+      "wins": 0
+    },
+    {
+      "id": "224c",
+      "username": "fille",
+      "wins": 1
+    }
+  ]
+}

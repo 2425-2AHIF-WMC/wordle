@@ -3,6 +3,7 @@
 import { gameState } from "./game.js";
 import { updateActiveTile, showMessage, colorTiles } from "./ui.js";
 import { checkIfWordExists } from "./word.js";
+import { AddWinsToJson } from "./users.js";
 
 export function addLetter(letter) {
     const row = document.getElementsByClassName("row")[gameState.currentRow];
@@ -47,6 +48,7 @@ export function checkWord() {
             colorTiles(guess, gameState.solution, gameState.currentRow);
             showMessage("🎉 Correct!");
             gameState.gameOver = true;
+            AddWinsToJson();
         } else {
             colorTiles(guess, gameState.solution, gameState.currentRow);
             gameState.currentRow++;
