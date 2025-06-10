@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     picture1.addEventListener("click", function() {
         RemoveAllHighlights();
         picture1.classList.add("selected");
-        chosenPicture = "bilder/Coffee☕.jpeg";
+        chosenPicture = "bilder/2_2.jpeg";
     });
 
     picture2.addEventListener("click", function() {
@@ -47,13 +47,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     picture3.addEventListener("click", function() {
         RemoveAllHighlights();
         picture3.classList.add("selected");
-        chosenPicture = "bilder/Mclovin.jpeg";
+        chosenPicture = "bilder/nonut 🍩 (@nonounno) on X.jpeg";
     });
 
     picture4.addEventListener("click", function() {
         RemoveAllHighlights();
         picture4.classList.add("selected");
-        chosenPicture = "bilder/meme мем пикча.jpeg";
+        chosenPicture = "bilder/40l3clajii9a1.jpeg";
     });
 
     picture5.addEventListener("click", function() {
@@ -94,7 +94,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         RemoveAllHighlights();
         chosenPicture = null;
 
-        alert("Picture saved!");
     });
 
     // Load saved picture when page loads

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const activeTile = document.querySelector('.tile.active');
         if (activeTile) {
-            activeTile.style.boxShadow = 'inset 0 0 0 1000px rgba(0, 0, 0, 0.5)';
+            activeTile.style.boxShadow = 'inset 0 0 0 1000px rgba(0, 0, 0, 0)';
         }
     })
 

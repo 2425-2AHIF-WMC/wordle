@@ -138,14 +138,15 @@ h1 {
     font-size: 16px;
 }
 
-#makeNewUserPopup{
-    position: absolute;
+#makeNewUserPopup {
+    position: fixed; /* Changed from absolute to fixed */
     display: none;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999; /* Add high z-index to ensure it's on top */
 }
 
 #changeProfilePopup{
@@ -158,16 +159,16 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#popupBox{
+#popupBox {
     background-color: white;
     width: 400px;
     padding: 30px;
     border-radius: 10px;
-
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10000; /* Ensure popup box is above backdrop */
 }
 
 #createUser{
@@ -399,6 +400,18 @@ button.yellow {
 }
 
 button.grey {
-    background-color: #999 !important; /* grau */
+    background-color: #555555 !important; /* grau */
     color: white;
+}
+
+
+
+.popup-open .tile.active {
+    border: 1px solid #ccc !important; /* Reset to normal border */
+}
+
+/* Alternative approach - completely hide the active state when popup is open */
+.popup-open .tile.active {
+    border: 1px solid #ccc !important;
+    position: static !important; /* Remove relative positioning */
 }
