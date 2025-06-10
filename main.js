@@ -12,7 +12,6 @@ let isPopupOpen = false;
 // Wait for the HTML DOM to fully load
 document.addEventListener("DOMContentLoaded", async () => {
     createBoard();                // Set up the game board in the DOM
-    createKeyboard();             // Create the on-screen keyboard
     updateActiveTile();           // Visually highlight the first tile
     getRandomWordFromLocalServer(); // Fetch a new random word from the local server
     document.getElementById("saveUser").addEventListener("click", () => {
