@@ -41,9 +41,8 @@ h1 {
     margin: 2px;
 }
 
-
-
 #reset-button {
+    display: none;
     background-color: darkgray;
     color: darkslategray;
     border: none;
@@ -52,7 +51,6 @@ h1 {
     font-size: 16px;
     cursor: pointer;
     float: left;
-
 }
 
 #reset-button:hover {
@@ -71,26 +69,6 @@ h1 {
     border: 2px solid #4285f4;
     position: relative;
 }
-
-/*
-.tile.active::after {
-    content: "";
-    position: absolute;
-    bottom: 17.5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 24px;
-    background-color: #4285f4;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50%, 100% { opacity: 1; }
-    25%, 75% { opacity: 0; }
-}
-
-*/
 
 .message {
     background-color: #333;
@@ -170,12 +148,21 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#changeProfilePopup{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 #popupBox{
     background-color: white;
     width: 400px;
     padding: 30px;
     border-radius: 10px;
-
 
     position: absolute;
     top: 50%;
@@ -227,3 +214,104 @@ h1 {
     background-color: lightgray;
 }
 
+#changeProfileButton {
+    background-color: #757D75;
+    color: lightgray;
+    border: none;
+    border-radius: 10rem;
+    padding: 3px 13px;
+    font-size: 13px;
+}
+
+.pictures{
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+#pictureOptions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#profilePopupBox {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    transition: all 0.3s ease;
+
+    background-color: white;
+    width: 830px;
+    height: 280px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pictures img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Selected image styling */
+.pictures.selected img {
+    border: 2px solid black;
+}
+
+#savePictureOption {
+    position: absolute;
+    top: 14rem;
+    left: 24rem;
+    background-color: darkgray;
+    color: darkslategray;
+    border: none;
+    border-radius: 10rem;
+    padding: 7px 17px;
+    font-size: 16px;
+}
+
+#savePictureOption:hover {
+    background-color: lightgray;
+}
+
+#reset{
+    background-color: darkgray;
+    color: darkslategray;
+    border: none;
+    border-radius: 10rem;
+    padding: 7px 17px;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+}
+
+#reset:hover {
+    background-color: lightgray;
+}
+
+#winAmount{
+    font-size: 20px;
+    font-weight: 600;
+    color: #28a745;
+    background: linear-gradient(145deg, #d4edda, #c3e6cb);
+    padding: 5px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#userSelect {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}

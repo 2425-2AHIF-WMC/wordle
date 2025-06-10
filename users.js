@@ -101,9 +101,14 @@ export async function AddWinsToJson() {
 
 export function LoadSavedUser () {
     const savedUser = localStorage.getItem("selectedUser");
+    const saveKey = "profilePicture_" + savedUser;
+    const savedPicture = localStorage.getItem(saveKey);
 
     if (savedUser) {
         currentUser = savedUser;
+
+        const profilePic = document.getElementById("user");
+        profilePic.style.backgroundImage = `url('${savedPicture}')`;
         console.log(currentUser);
     }
 }

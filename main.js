@@ -10,7 +10,7 @@ let isPopupOpen = false;
 
 
 // Wait for the HTML DOM to fully load
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     createBoard();                // Set up the game board in the DOM
     createKeyboard();             // Create the on-screen keyboard
     updateActiveTile();           // Visually highlight the first tile
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         createUser();
     });
     GetUserFromJson();
-    LoadUser();
+    await LoadUser();
     ProfileButtonClick();
     LoadSavedUser();
     DisplayUsername();
@@ -48,7 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         location.reload();
     })
 
-
+    document.getElementById("reset").addEventListener("click", () => {
+        location.reload();
+    })
 
 });
 
