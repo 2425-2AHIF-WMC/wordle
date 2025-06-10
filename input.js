@@ -16,3 +16,22 @@ export function handleKeyPress(event) {
         addLetter(key.toUpperCase());
     }
 }
+
+// Event Listener für alle Keyboard-Buttons hinzufügen
+export function setupKeyboard() {
+    const keyboardButtons = document.querySelectorAll("#keyboard-container button");
+    keyboardButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const key = button.getAttribute("data-key");
+
+            if (key === "enter") {
+                checkWord();  // eigene Funktion, die den aktuellen Guess abschließt
+            } else if (key === "del") {
+                deleteLetter();  // Funktion, die den letzten Buchstaben löscht
+            } else {
+                addLetter(key.toUpperCase());  // Buchstaben hinzufügen, immer Großbuchstaben
+            }
+        });
+    });
+}
+

@@ -315,3 +315,90 @@ h1 {
     font-size: 16px;
     cursor: pointer;
 }
+
+@keyframes flip {
+    0%{
+        transform: scaleY(1);
+    }
+    50%{
+        transform: scaleY(0);
+    }
+    100%{
+        transform: scaleY(1);
+    }
+}
+
+.animated {
+    animation: flip 0.5s ease;
+}
+
+/* Flip zur Hälfte (0° → 90°) */
+.flip-half {
+    animation: flipHalf 0.25s forwards;
+}
+
+/* Flip zurück (90° → 0°) */
+.flip-back {
+    animation: flipBack 0.25s forwards;
+}
+
+@keyframes flipHalf {
+    0% { transform: scaleY(1); }
+    100% { transform: scaleY(0); }
+}
+
+@keyframes flipBack {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+
+#keyboard-container {
+    height: 200px;
+}
+
+.keyboard-row{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
+}
+
+.keyboard-row button {
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    height: 58px;
+    cursor: pointer;
+    background-color: rgb(129,131,132);
+    color: rgb(215, 218, 220);
+    flex-grow: 1;
+    text-transform: uppercase;
+    margin-right: 6px;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.keyboard-row button.wide-button {
+    flex-grow: 1.5;
+}
+
+.spacer-half {
+    flex-grow: 0.5;
+}
+
+button.green {
+    background-color: #67b05a !important; /* grün */
+    color: white;
+}
+
+button.yellow {
+    background-color: #ebd067 !important; /* gelb */
+    color: black;
+}
+
+button.grey {
+    background-color: #999 !important; /* grau */
+    color: white;
+}

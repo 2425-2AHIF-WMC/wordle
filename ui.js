@@ -45,66 +45,90 @@ export function showMessage(text) {
 }
 
 export function colorTiles(guess, solution, currentRow) {
-    const row = document.getElementsByClassName("row")[currentRow]; // Get current row
-    const solutionArray = solution.split(""); // Split solution into characters
-    const guessArray = guess.split(""); // Split guess into characters
-    const colors = Array(5).fill("grey"); // Default color for all tiles
+    const row = document.getElementsByClassName("row")[currentRow];
+    const solutionArray = solution.split("");
+    const guessArray = guess.split("");
+    const colors = Array(5).fill("grey");
 
-    // Set green for correct letters in correct positions
+    // Green pass
     for (let i = 0; i < 5; i++) {
         if (guessArray[i] === solutionArray[i]) {
-            colors[i] = "#67b05a"; //green
-            solutionArray[i] = null; // Prevent reuse
+            colors[i] = "#67b05a";
+            solutionArray[i] = null;
         }
     }
 
-    // Set yellow for correct letters in wrong positions
+    // Yellow pass
     for (let i = 0; i < 5; i++) {
         if (colors[i] !== "#67b05a") {
             const index = solutionArray.indexOf(guessArray[i]);
             if (index !== -1) {
-                colors[i] = "#ebd067"; //yellow
+                colors[i] = "#ebd067";
                 solutionArray[index] = null;
             }
         }
     }
 
-    // Apply the tile colors
     for (let i = 0; i < 5; i++) {
         const tile = row.children[i];
-        tile.style.backgroundColor = colors[i];
-        tile.style.color = "white";
-        tile.style.border = "1px solid #999";
+
+        setTimeout(() => {
+            tile.classList.add("flip-half");
+
+            // In der Mitte der Flip (nach 250ms), Farbe setzen
+            setTimeout(() => {
+                tile.style.backgroundColor = colors[i];
+                tile.style.color = "white";
+                tile.style.border = "1px solid #999";
+
+                tile.classList.remove("flip-half");
+                tile.classList.add("flip-back");
+            }, 250); // Hälfte der Animationsdauer (0.5s gesamt)
+        }, i * 300);
     }
 }
 
-const letterStatuses = {}; // Q: default, G: green, Y: yellow, X: grey
+const letterStatuses = {}; // globaler Status pro Buchstabe
 
-export function updateKeyboard(guess, solution) { //no usage --> fix
-    const guessArray = guess.split("");
-    const solutionArray = solution.split("");
+export function updateKeyboard(guess, solution) {
+    const guessArray = guess.toUpperCase().split("");
+    const solutionArray = solution.toUpperCase().split("");
 
     for (let i = 0; i < guessArray.length; i++) {
         const letter = guessArray[i];
-        const key = document.getElementById(`key-${letter}`);
-        if (!key) continue;
+        const correctLetter = solutionArray[i];
 
-        if (letter === solutionArray[i]) {
-            letterStatuses[letter] = "green";
-        } else if (solution.includes(letter)) {
+        let newStatus = "grey";
+
+        if (letter === correctLetter) {
+            newStatus = "green";
+            solutionArray[i] = null; // Verhindert doppelte Gelb-Treffer
+        } else if (solutionArray.includes(letter)) {
             if (letterStatuses[letter] !== "green") {
-                letterStatuses[letter] = "yellow";
-            }
-        } else {
-            if (!letterStatuses[letter]) {
-                letterStatuses[letter] = "grey";
+                newStatus = "yellow";
             }
         }
 
-        key.classList.remove("grey", "yellow", "green");
-        key.classList.add(letterStatuses[letter]);
+        // Höhere Priorität: grün > gelb > grau
+        const currentStatus = letterStatuses[letter];
+        const priority = { grey: 0, yellow: 1, green: 2 };
+
+        if (!currentStatus || priority[newStatus] > priority[currentStatus]) {
+            letterStatuses[letter] = newStatus;
+
+            const button = document.querySelector(
+                `#keyboard-container button[data-key="${letter.toLowerCase()}"]`
+            );
+
+            if (button) {
+                button.classList.remove("grey", "yellow", "green");
+                button.classList.add(newStatus);
+            }
+        }
     }
 }
+
+
 
 export function createKeyboard() {
     const keyboard = document.getElementById("keyboard");

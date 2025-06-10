@@ -1,7 +1,7 @@
 // Responsible for gameplay actions: entering letters, validating guess, feedback
 
 import { gameState } from "./game.js";
-import { updateActiveTile, showMessage, colorTiles } from "./ui.js";
+import { updateActiveTile, showMessage, colorTiles, updateKeyboard } from "./ui.js";
 import { checkIfWordExists } from "./word.js";
 import { AddWinsToJson } from "./users.js";
 
@@ -43,6 +43,9 @@ export function checkWord() {
             showMessage("❌ This word doesn't exist!");
             return;
         }
+
+        colorTiles(guess, gameState.solution, gameState.currentRow);
+        updateKeyboard(guess, gameState.solution);
 
         if (guess === gameState.solution) {
             colorTiles(guess, gameState.solution, gameState.currentRow);

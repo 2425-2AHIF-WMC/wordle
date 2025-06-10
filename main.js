@@ -3,7 +3,7 @@
 // Import functions from other modules
 import { createBoard, updateActiveTile, createKeyboard } from "./ui.js";
 import { getRandomWordFromLocalServer } from "./word.js";
-import { handleKeyPress } from "./input.js";
+import { handleKeyPress, setupKeyboard} from "./input.js";
 import { resetGame } from "./game.js";
 import { createUser, GetUserFromJson, LoadUser, ProfileButtonClick ,LoadSavedUser, DisplayUsername } from "./users.js";
 let isPopupOpen = false;
@@ -12,7 +12,8 @@ let isPopupOpen = false;
 // Wait for the HTML DOM to fully load
 document.addEventListener("DOMContentLoaded", async () => {
     createBoard();                // Set up the game board in the DOM
-    updateActiveTile();           // Visually highlight the first tile
+    updateActiveTile();
+    setupKeyboard();// Visually highlight the first tile
     getRandomWordFromLocalServer(); // Fetch a new random word from the local server
     document.getElementById("saveUser").addEventListener("click", () => {
         createUser();
