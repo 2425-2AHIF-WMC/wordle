@@ -514,7 +514,6 @@ table {
     font-family: Arial, sans-serif;
     font-size: 18px; /* Increased from 14px */
 }
-
 /* Table header styling */
 table th {
     background: #2d2d2d;
@@ -525,11 +524,9 @@ table th {
     border-right: 1px solid #444;
     font-size: 16px;
 }
-
 table th:last-child {
     border-right: none;
 }
-
 /* Table data styling */
 table td {
     padding: 15px 20px; /* Increased padding */
@@ -539,66 +536,65 @@ table td {
     text-align: center; /* All columns center aligned */
     font-size: 16px;
 }
-
 table td:last-child {
     border-right: none;
 }
-
 /* Alternating row colors */
 table tr:nth-child(even) td {
     background: #f9f9f9;
 }
-
 table tr:nth-child(odd) td {
     background: white;
 }
-
 /* Position column styling */
 table td:first-child {
     text-align: center;
     font-weight: normal;
     position: relative;
 }
-
 /* First place styling with trophy icon */
 .first-place td:first-child {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/></svg>');
+    position: relative;
+    color: #333; /* Show the number */
+    font-weight: bold;
+}
+.first-place td:first-child::before {
+    content: '';
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 20px 20px;
-    color: transparent; /* Hide the "1" text */
-    width: 60px;
+    background-size: 18px 18px;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
 }
-
 /* Subtle highlighting for current user */
 .current-user {
     position: relative;
 }
-
 .current-user td {
     background: #e8e8e8 !important; /* More gray background */
     border-bottom: 1px solid #ddd; /* Keep bottom border */
     border-right: 1px solid #ddd; /* Keep right border */
+    font-weight: bold; /* Make current user's row bold */
 }
-
 .current-user td:last-child {
     border-right: none; /* Remove right border on last cell */
 }
-
 /* Make sure the subtle highlighting doesn't interfere with alternating colors */
 .current-user.first-place td,
 .current-user.second-place td,
 .current-user.third-place td {
     background: #e8e8e8 !important;
+    font-weight: bold; /* Ensure bold is maintained for special places */
 }
-
 /* Remove other special place styling to keep it clean */
 .first-place,
 .second-place,
 .third-place {
     background: inherit;
 }
-
 /* Responsive design */
 @media (max-width: 600px) {
     table {
