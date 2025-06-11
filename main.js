@@ -52,6 +52,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         location.reload();
     })
 
+
+
+    document.getElementById("tutorialButton").addEventListener("click", () => {
+        document.getElementById("makeTutorialPopup").style.display = "block";
+        isPopupOpen = true;
+
+        const activeTile = document.querySelector('.tile.active');
+        if (activeTile) {
+            activeTile.style.boxShadow = 'inset 0 0 0 1000px rgba(0, 0, 0, 0)';
+        }
+    })
+
+
+
+    document.getElementById("closeTutoPopup").addEventListener("click", () => {
+        document.getElementById("makeTutorialPopup").style.display = "none";
+        isPopupOpen = false;
+
+        const activeTileClose = document.querySelector('.tile.active');
+        if (activeTileClose) {
+            activeTileClose.style.boxShadow = '';
+        }
+    })
 });
 
 

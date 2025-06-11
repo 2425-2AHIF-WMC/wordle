@@ -415,3 +415,66 @@ button.grey {
     border: 1px solid #ccc !important;
     position: static !important; /* Remove relative positioning */
 }
+
+#tutorialButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 6rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10rem;
+    background-image: url("bilder/Icon-round-Question_mark.svg.png");
+    background-size: cover;
+}
+
+#popupBoxTutorial {
+    background-color: white;
+    width: 60rem;
+    height: 40rem;
+    padding: 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000; /* Ensure popup box is above backdrop */
+}
+
+#makeTutorialPopup {
+    position: fixed; /* Changed from absolute to fixed */
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999; /* Add high z-index to ensure it's on top */
+}
+
+#tutofull {
+    float: left;
+    margin-top: -6rem;
+}
+
+.tutoText{
+    margin-left: 30rem;
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+}
+
+#closeTutoPopup {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10rem;
+    background-image: url("bilder/close-x.svg");
+    background-size: cover;
+}
