@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     LoadSavedUser();
     DisplayUsername();
     DisplayWins();
+    PopulateLeaderboard(user);
 
     const select = document.getElementById("userSelect");
     select.addEventListener("change", PlayerSelect);
@@ -183,4 +184,43 @@ function DisplayWins () {
             wins.textContent = `${user[i].wins}`;
         }
     }
+}
+
+
+function PopulateLeaderboard(users) {
+    // Sort users by wins (highest to lowest)
+    const sortedUsers = [...users].sort((a, b) => b.wins - a.wins);
+
+    // Get the table body element
+    const tableBody = document.getElementById("tablebody");
+
+    // Clear existing content
+    tableBody.innerHTML = "";
+
+    // Populate the table with sorted users
+    sortedUsers.forEach((user, index) => {
+        const row = document.createElement("tr");
+
+        // Add special styling for current user
+        if (user.username === currentUser) {
+            row.classList.add("current-user");
+        }
+
+        // Add special styling for top 3 positions
+        if (index === 0) {
+            row.classList.add("first-place");
+        } else if (index === 1) {
+            row.classList.add("second-place");
+        } else if (index === 2) {
+            row.classList.add("third-place");
+        }
+
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${user.username}</td>
+            <td>${user.wins}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
 }

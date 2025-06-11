@@ -478,3 +478,140 @@ h2 {
     background-image: url("bilder/close-x.svg");
     background-size: cover;
 }
+
+#gameLeaderBoard{
+    margin: auto;
+}
+
+#leaderh1{
+    margin-top: 9rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Database-style Table Styles - Bigger and More Readable */
+table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Smooth rounded corners */
+    overflow: hidden; /* Prevent content from spilling outside rounded corners */
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Increased from 14px */
+}
+
+/* Table header styling */
+table th {
+    background: #2d2d2d;
+    color: white;
+    padding: 15px 20px; /* Increased padding */
+    text-align: center; /* Center aligned like the rest */
+    font-weight: normal;
+    border-right: 1px solid #444;
+    font-size: 16px;
+}
+
+table th:last-child {
+    border-right: none;
+}
+
+/* Table data styling */
+table td {
+    padding: 15px 20px; /* Increased padding */
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background: white;
+    text-align: center; /* All columns center aligned */
+    font-size: 16px;
+}
+
+table td:last-child {
+    border-right: none;
+}
+
+/* Alternating row colors */
+table tr:nth-child(even) td {
+    background: #f9f9f9;
+}
+
+table tr:nth-child(odd) td {
+    background: white;
+}
+
+/* Position column styling */
+table td:first-child {
+    text-align: center;
+    font-weight: normal;
+    position: relative;
+}
+
+/* First place styling with trophy icon */
+.first-place td:first-child {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+    color: transparent; /* Hide the "1" text */
+    width: 60px;
+}
+
+/* Subtle highlighting for current user */
+.current-user {
+    position: relative;
+}
+
+.current-user td {
+    background: #e8e8e8 !important; /* More gray background */
+    border-bottom: 1px solid #ddd; /* Keep bottom border */
+    border-right: 1px solid #ddd; /* Keep right border */
+}
+
+.current-user td:last-child {
+    border-right: none; /* Remove right border on last cell */
+}
+
+/* Make sure the subtle highlighting doesn't interfere with alternating colors */
+.current-user.first-place td,
+.current-user.second-place td,
+.current-user.third-place td {
+    background: #e8e8e8 !important;
+}
+
+/* Remove other special place styling to keep it clean */
+.first-place,
+.second-place,
+.third-place {
+    background: inherit;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    table {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .first-place td:first-child {
+        background-size: 18px 18px;
+    }
+}
